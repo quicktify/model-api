@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 
 RUN python -m nltk.downloader punkt stopwords wordnet
 
+ENV NLTK_DATA=/root/nltk_data
+
 COPY ./app /app/app
 COPY ./main.py /app/main.py
 
