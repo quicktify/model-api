@@ -3,12 +3,16 @@ FROM python:3.12-slim-bookworm
 WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
-
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-RUN python -m nltk.downloader punkt stopwords wordnet
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt stopwords wordnet
 
-ENV NLTK_DATA=/root/nltk_data
+ENV NLTK_DATA=/usr/local/share/nltk_data
+
+RUN adduser --system --group appuser
+
+RUN chown -R appuser:appuser /usr/local/share/nltk_data
+USER appuser
 
 COPY ./app /app/app
 COPY ./main.py /app/main.py
