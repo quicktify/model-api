@@ -5,7 +5,7 @@ WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt stopwords wordnet
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt_tab stopwords wordnet
 
 ENV NLTK_DATA=/usr/local/share/nltk_data
 
