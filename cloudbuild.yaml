@@ -1,0 +1,18 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        git lfs install
+        git lfs pull
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'asia-southeast2-docker.pkg.dev/quicktify-app/cloud-run-source-deploy/model-api/model-api',
+        '.',
+      ]
+images:
+  - 'asia-southeast2-docker.pkg.dev/quicktify-app/cloud-run-source-deploy/model-api/model-api'
