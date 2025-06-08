@@ -6,7 +6,6 @@ matplotlib==3.10.3
 nltk==3.9.1
 numpy==2.3.0
 pandas==2.3.0
-protobuf==6.31.1
 pydantic==2.11.5
 scikit_learn==1.6.1
 scipy==1.15.3
