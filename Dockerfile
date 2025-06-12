@@ -3,7 +3,7 @@ FROM python:3.12-slim-bookworm as builder
 
 WORKDIR /app
 
-COPY ./requirements.txt /app/requirements.txt
+COPY . .
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r /app/requirements.txt
@@ -25,8 +25,8 @@ RUN adduser --system --group appuser \
 
 USER appuser
 
-COPY ./app /app/app
-COPY ./main.py /app/main.py
+COPY --from=builder /app/app /app/app
+COPY --from=builder /app/main.py /app/main.py
 
 EXPOSE 8080
 
